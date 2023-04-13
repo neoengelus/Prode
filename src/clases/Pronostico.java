@@ -60,4 +60,9 @@ public class Pronostico {
 		this.equipo1 = p.equipo1;
 		this.resultado = p.resultado;
 	}
+	
+	public Pronostico(Partido partido, ResultadoEnum resultado) {
+		this.partido = partido;
+		this.resultado = resultado;
+	}
 }

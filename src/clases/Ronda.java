@@ -1,8 +1,11 @@
 package clases;
 
+import java.util.List;
+
 public class Ronda {
 	private String nroRonda;
-	private Partido partido[];
+	private List<Partido> partidoR;
+	private List<Pronostico> partidoP;
 	
 	public String getNroRonda() {
 		return nroRonda;
@@ -12,12 +15,20 @@ public class Ronda {
 		this.nroRonda = nroRonda;
 	}
 	
-	public Partido[] getPartido() {
-		return partido;
+	public List<Partido> getPartidoR() {
+		return partidoR;
 	}
-	
-	public void setPartido(Partido partido[]) {
-		this.partido = partido;
+
+	public void setPartidoR(List<Partido> partidoR) {
+		this.partidoR = partidoR;
+	}
+
+	public List<Pronostico> getPartidoP() {
+		return partidoP;
+	}
+
+	public void setPartidoP(List<Pronostico> partidoP) {
+		this.partidoP = partidoP;
 	}
 	
 	public int puntos() {
@@ -28,13 +39,45 @@ public class Ronda {
 		
 	}
 	
-	public Ronda(String nro, Partido partido[]) {
-		this.nroRonda = nro;
-		this.partido = partido;
+	public Ronda(String nroRonda, List<Partido> partidoR, List<Pronostico> partidoP) {
+		super();
+		this.nroRonda = nroRonda;
+		this.partidoR = partidoR;
+		this.partidoP = partidoP;
 	}
 	
 	public Ronda(Ronda r) {
+		super();
 		this.nroRonda = r.nroRonda;
-		this.partido = r.partido;
+		this.partidoR = r.partidoR;
+		this.partidoP = r.partidoP;
+	}
+	
+	public Ronda(List<Partido> partidoR, List<Pronostico> partidoP) {
+		super();
+		this.partidoP = partidoP;
+		this.partidoR = partidoR;
+	}
+
+	public int determinarPuntos() {
+		int puntos = 0 , i = 0;
+		
+		for (Pronostico pro : this.partidoP) {
+			if (i == 16) i = 0;
+			if (this.partidoR.get(i).determinarResultado() == pro.getPartido().determinarResultado()) {
+				puntos += 1;
+			}
+		}
+		return puntos;
+	}
+	
+	public int determinarRonda(List<String> resultado) {
+		int ronda = 0;
+		for (String elemento : resultado) {
+			String [] partidoL = elemento.split(";");
+			int aux = Integer.parseInt(partidoL[0]);
+			if (aux > ronda) ronda = aux;
+		}
+		return ronda;
 	}
 }
