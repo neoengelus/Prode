@@ -1,17 +1,33 @@
-﻿Equipo 1; Gana 1; Empata; Gana 2; Equipo 2
-Qatar;X;;;Ecuador
-Senegal;;X;;Países Bajos
-Inglaterra;X;;;Irán
-Estados Unidos;;;X;Gales
-Argentina;X;;;Arabia Saudita
-Polonia;;X;;México
-Francia;X;;;Australia
-Dinamarca;;X;;Túnez
-España;X;;;Costa Rica
-Alemania;X;;;Japón
-Bélgica;;X;;Canadá
-Marruecos;;X;;Croacia
-Suiza;X;;;Camerún
-Brasil;X;;;Serbia
-Uruguay;X;;;Corea del Sur
-Portugal;X;;;Ghana
+﻿Participante;Equipo 1; Gana 1; Empata; Gana 2; Equipo 2
+Juan;Qatar;X;;;Ecuador
+Juan;Senegal;;X;;Países Bajos
+Juan;Inglaterra;X;;;Irán
+Juan;Estados Unidos;;;X;Gales
+Juan;Argentina;X;;;Arabia Saudita
+Juan;Polonia;;X;;México
+Juan;Francia;X;;;Australia
+Juan;Dinamarca;;X;;Túnez
+Juan;España;X;;;Costa Rica
+Juan;Alemania;X;;;Japón
+Juan;Bélgica;;X;;Canadá
+Juan;Marruecos;;X;;Croacia
+Juan;Suiza;X;;;Camerún
+Juan;Brasil;X;;;Serbia
+Juan;Uruguay;X;;;Corea del Sur
+Juan;Portugal;X;;;Ghana
+Mariela;Qatar;;X;;Ecuador
+Mariela;Senegal;;;X;Países Bajos
+Mariela;Inglaterra;;;X;Irán
+Mariela;Estados Unidos;X;;;Gales
+Mariela;Argentina;X;;;Arabia Saudita
+Mariela;Polonia;;X;;México
+Mariela;Francia;;;X;Australia
+Mariela;Dinamarca;;X;;Túnez
+Mariela;España;X;;;Costa Rica
+Mariela;Alemania;X;;;Japón
+Mariela;Bélgica;;;X;Canadá
+Mariela;Marruecos;;;X;Croacia
+Mariela;Suiza;X;;;Camerún
+Mariela;Brasil;;X;;Serbia
+Mariela;Uruguay;X;;;Corea del Sur
+Mariela;Portugal;;;X;Ghana

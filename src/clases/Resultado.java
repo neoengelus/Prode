@@ -5,17 +5,17 @@ public class Resultado {
 	
 	public ResultadoEnum determinarResultado(String[] lista) {
 		ResultadoEnum res = null;
-		int i = 1;
-		for (i = 1; i <= 3; i++) {
+	
+		for (int i = 2; i <= 4; i++) {
 			if (lista[i].equals("X")) {
 				switch (i) {
-					case 1:
+					case 2:
 						res = ResultadoEnum.GANADOR;
 						break;
-					case 2:
+					case 3:
 						res = ResultadoEnum.EMPATE;
 						break;
-					case 3:
+					case 4:
 						res = ResultadoEnum.PERDEDOR;
 						break;
 				}			
