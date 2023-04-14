@@ -65,4 +65,11 @@ public class Pronostico {
 		this.partido = partido;
 		this.resultado = resultado;
 	}
+
+	@Override
+	public String toString() {
+		return partido + "\n" + resultado;
+	}
+	
+	
 }

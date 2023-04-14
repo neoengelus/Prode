@@ -73,4 +73,10 @@ public class Partido {
 		}
 		return resultado;
 	}
+
+	@Override
+	public String toString() {
+		return this.equipo1.getNombre() + " vs " + this.equipo2.getNombre() + "\n" + this.golesE1 + " " + this.golesE2;
+	}
+
 }

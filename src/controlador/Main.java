@@ -1,7 +1,9 @@
 package controlador;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import clases.Archivo;
 import clases.Equipo;
@@ -22,8 +24,10 @@ public class Main {
 		List<Pronostico> partidoP = new ArrayList<Pronostico>();
 		List<Ronda> rondaL = new ArrayList<Ronda>();
 		List<String> participantes = new ArrayList<String>();
-		
-		int i = 0, nroRondas = 1, nroRonda = 1; String aux = "";
+		int i = 0, nroRonda = 0, nro = 0; String aux = "";
+		Map<Integer, List<Partido>> partido = new HashMap<Integer, List<Partido>>();
+		Map<String, List<Pronostico>> apuesta = new HashMap<String, List<Pronostico>>();
+
 		
 		for (String elemento : resultado) {
 				String [] partidoL = elemento.split(";");
@@ -32,6 +36,8 @@ public class Main {
 				partidoR.add(p);
 				if (nroRonda < Integer.parseInt(partidoL[0])) {
 					nroRonda = Integer.parseInt(partidoL[0]);
+					partido.put(nroRonda, partidoR);
+					partidoR.clear();
 				}
 			}
 //			System.out.println(elemento);
@@ -41,37 +47,49 @@ public class Main {
 				ResultadoEnum resE = res.determinarResultado(partidoL);
 				Pronostico pr = new Pronostico(partidoR.get(i), resE);
 				i++;
-				if (i == 16) i = 0;
+				if (i == 15) i = 0;
 				partidoP.add(pr);
 				if (!aux.equals(partidoL[0])) {
 					participantes.add(partidoL[0]);
 					aux = partidoL[0];
+					apuesta.put(aux, partidoP);
+					partidoP.clear();
 				}
 //				System.out.println(elemento);
 		}
 //		for (Partido par : partidoR) {
 //			System.out.println(par.getGolesE1() + " " + par.getGolesE2() + " " + par.getEquipo1().getNombre() + " " + par.getEquipo2().getNombre());
 //		}
-//		
 //		for (Pronostico pro : partidoP) {
 //			System.out.println(pro.getPartido().getEquipo1().getNombre() +" " + pro.getPartido().getEquipo2().getNombre() + " " + pro.getResultado());
 //		}
-		
-		Ronda ronda = new Ronda(partidoR, partidoP);
-		ronda.setNroRonda(Integer.toString(nroRondas));
-		rondaL.add(ronda);
+//		Ronda ronda = new Ronda(partidoR, partidoP);
+//		ronda.setNroRonda(Integer.toString(nroRonda));
+//		rondaL.add(ronda);
 //		for (Ronda ron : rondaL) {
 //			for (Partido par : ron.getPartidoR()) {
 //				System.out.println(par.getEquipo1().getNombre() + " " + par.getEquipo2().getNombre() + " " + par.determinarResultado());
 //			}
 //		}
-//		nroRonda = rondaL.size();
+//		for (Map.Entry<Integer, List<Partido>> entry : partido.entrySet()) {
+//		    System.out.println("Ronda Nº " + entry.getKey());
+//		    for (Partido par : entry.getValue() ) { 
+//		    	System.out.println(par.toString());
+//		    }
+//		}
+//		for (Map.Entry<String, List<Pronostico>> entry : apuesta.entrySet()) {
+//		    System.out.println("Jugador: " + entry.getKey() + "\nPronostico");
+//		    for (Pronostico pro : entry.getValue()) {
+//		    	System.out.println(pro.toString());
+//		    }
+//		}
+		for (i = 0; i < participantes.size(); i++) {
+			if (nro < nroRonda) nro++;
+			Ronda ronda = new Ronda(Integer.toString(i+1), partido.get(nro), apuesta.get(participantes.get(i)));
+			rondaL.add(ronda);
+		}
 		for (Ronda ron : rondaL) {
-			for (String participante : participantes) {
-				System.out.println(participante + " " + "Puntos " + ron.determinarPuntos());
+			System.out.println("Puntos " + ron.determinarPuntos());
 			}
 		}
-		
-		
-	}
 }
