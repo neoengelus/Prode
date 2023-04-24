@@ -1,4 +1,4 @@
-package clases;
+package edu.utn.java.pronosticoDeportivo.clases;
 
 public class Equipo {
 	private String nombre;
@@ -33,4 +33,12 @@ public class Equipo {
 		this.nombre = e.nombre;
 		this.descripcion = e.descripcion;
 	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return nombre;
+	}
+	
+	
 }

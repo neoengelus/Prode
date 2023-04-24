@@ -1,4 +1,4 @@
-package clases;
+package edu.utn.java.pronosticoDeportivo.clases;
 
 public class Resultado {
 	public enum ResultadoEnum {GANADOR,EMPATE,PERDEDOR};
@@ -34,4 +34,20 @@ public class Resultado {
 		}
 		return pos;
 	}
+	
+	public ResultadoEnum determinarResultado(String resultado) {
+		ResultadoEnum res = null;
+		switch (resultado) {
+		case "G":
+			res = ResultadoEnum.GANADOR;
+			break;
+		case "E":
+			res = ResultadoEnum.EMPATE;
+			break;
+		case "P":
+			res = ResultadoEnum.PERDEDOR;
+			break;
+			}
+		return res;
+		}
 }

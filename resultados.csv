@@ -1,17 +1,49 @@
-﻿Ronda;Equipo 1; Cant. goles 1; Cant. goles 2; Equipo 2
-1;Qatar;0;2;Ecuador
-1;Senegal;0;2;Países Bajos
-1;Inglaterra;6;2;Irán
-1;Estados Unidos;1;1;Gales
-1;Argentina;1;2;Arabia Saudita
-1;Polonia;0;0;México
-1;Francia;4;1;Australia
-1;Dinamarca;0;0;Túnez
-1;España;7;0;Costa Rica
-1;Alemania;1;2;Japón
-1;Bélgica;1;0;Canadá
-1;Marruecos;0;0;Croacia
-1;Suiza;1;0;Camerún
-1;Brasil;2;0;Serbia
-1;Uruguay;0;0;Corea del Sur
-1;Portugal;3;2;Ghana
+id_partido;equipoA;equipoB;golesA;golesB;id_ronda
+1;QAT;ECU;0;2;1
+2;SEN;NED;0;2;1
+3;QAT;SEN;1;3;1
+4;NED;ECU;1;1;1
+5;NED;QAT;2;0;1
+6;ECU;SEN;1;2;1
+7;GBR;IRI;6;2;2
+8;USA;GLS;1;1;2
+9;GBR;USA;0;0;2
+10;GLS;IRI;0;2;2
+11;GLS;GBR;0;3;2
+12;IRI;USA;0;1;2
+13;ARG;KSA;1;2;3
+14;MEX;POL;0;0;3
+15;ARG;MEX;2;0;3
+16;POL;KSA;2;0;3
+17;POL;ARG;0;2;3
+18;KSA;MEX;1;2;3
+19;FRA;AUS;4;1;4
+20;DEN;TUN;0;0;4
+21;FRA;DEN;2;1;4
+22;TUN;AUS;0;1;4
+23;TUN;FRA;1;0;4
+24;AUS;DEN;1;0;4
+25;ESP;CRC;7;0;5
+26;GER;JPN;1;2;5
+27;ESP;GER;1;1;5
+28;JPN;CRC;1;2;5
+29;JPN;ESP;2;1;5
+30;CRC;GER;2;4;5
+31;BEL;CAN;1;0;6
+32;MAR;CRO;0;0;6
+33;BEL;MAR;0;2;6
+34;CRO;CAN;4;1;6
+35;CRO;BEL;0;0;6
+36;CAN;MAR;1;2;6
+37;BRA;SRB;2;0;7
+38;SUI;CMR;1;0;7
+39;BRA;SUI;1;0;7
+40;CMR;SRB;3;3;7
+41;CMR;BRA;0;1;7
+42;SRB;SUI;2;3;7
+43;POR;GHA;3;2;8
+44;URU;KOR;0;0;8
+45;POR;URU;2;0;8
+46;KOR;GHA;2;3;8
+47;KOR;POR;2;1;8
+48;GHA;URU;0;2;8

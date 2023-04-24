@@ -1,12 +1,13 @@
-package clases;
+package edu.utn.java.pronosticoDeportivo.clases;
 
-import clases.Resultado.ResultadoEnum;
+import edu.utn.java.pronosticoDeportivo.clases.Resultado.ResultadoEnum;
 
 public class Partido {
 	private Equipo equipo1;
 	private Equipo equipo2;
 	private int golesE1;
 	private int golesE2;
+	
 	
 	public Equipo getEquipo1() {
 		return equipo1;
@@ -76,7 +77,7 @@ public class Partido {
 
 	@Override
 	public String toString() {
-		return this.equipo1.getNombre() + " vs " + this.equipo2.getNombre() + "\n" + this.golesE1 + " " + this.golesE2;
+		return this.equipo1.getNombre() + " vs " + this.equipo2.getNombre() + " " + this.golesE1 + " " + this.golesE2;
 	}
 
 }

@@ -1,11 +1,10 @@
-package clases;
+package edu.utn.java.pronosticoDeportivo.clases;
 
-import clases.Resultado.ResultadoEnum;
+import edu.utn.java.pronosticoDeportivo.clases.Resultado.ResultadoEnum;
 
 public class Pronostico {
 	private Partido partido;
 	private Equipo equipo1;
-	private Equipo equipo2;
 	private ResultadoEnum resultado;
 	
 	public Partido getPartido() {
@@ -19,15 +18,7 @@ public class Pronostico {
 	public Equipo getEquipo() {
 		return equipo1;
 	}
-	
-	public Equipo getEquipo2() {
-		return equipo2;
-	}
 
-	public void setEquipo2(Equipo equipo2) {
-		this.equipo2 = equipo2;
-	}
-	
 	public void setEquipo(Equipo equipo) {
 		this.equipo1 = equipo;
 	}
@@ -48,10 +39,9 @@ public class Pronostico {
 		
 	}
 	
-	public Pronostico(Partido partido, Equipo equipo1, Equipo equipo2, ResultadoEnum resultado) {
+	public Pronostico(Partido partido, Equipo equipo1, ResultadoEnum resultado) {
 		this.partido = partido;
 		this.equipo1 = equipo1;
-		this.equipo2 = equipo2;
 		this.resultado = resultado;
 	}
 	
