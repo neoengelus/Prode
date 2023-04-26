@@ -33,6 +33,7 @@ public class Consulta {
 				eq.setDescripcion(rs.getString(1));
 				eq.setNombre(rs.getString(2));
 				} else eq = null;
+			usarConexion.close();
 		}catch (Exception e) {
 			System.out.println("Ocurrio un error inesperado, intente de nuevo " +e);
 		}
@@ -61,6 +62,7 @@ public class Consulta {
 			for (Partido p : listaPartido) {
 				System.out.println(p);
 			}
+			usarConexion.close();
 		}catch (Exception e) {
 			System.out.println("Ocurrio un error inesperado, intente de nuevo " +e);
 		}
@@ -80,6 +82,7 @@ public class Consulta {
 				ps.executeUpdate();
 			}
 			System.out.println("Se cargaron correctamente los resultados de los partidos");
+			usarConexion.close();
 		}catch (Exception e) {
 			System.out.println("Ocurrio un error inesperado"+ " "+e);
 		}
@@ -104,6 +107,7 @@ public class Consulta {
 				}
 			}
 			System.out.println("Se cargaron correctamente los pronosticos de los partidos");
+			usarConexion.close();
 		}catch (Exception e) {
 			System.out.println("Ocurrio un error inesperado"+ " "+e);
 		}
@@ -120,6 +124,7 @@ public class Consulta {
 			while (rs.next()) {
 				System.out.println(rs.getString(2) + " " +rs.getString(3) + " " + rs.getString(4) + " " + rs.getString(5));
 				}
+			usarConexion.close();
 		}catch (Exception e) {
 			System.out.println("Ocurrio un error inesperado"+ " "+e);
 		}
@@ -138,6 +143,7 @@ public class Consulta {
 				Equipo equipoA = new Equipo(buscarEquipo(eq1)), equipoB = new Equipo(buscarEquipo(eq2));
 				pa = new Partido (equipoA, equipoB, goles1 ,goles2);
 				} else pa = null;
+			usarConexion.close();
 		}catch (Exception e) {
 			System.out.println("Ocurrio un error inesperado, intente de nuevo " +e);
 		}
@@ -183,6 +189,7 @@ public class Consulta {
 					listaPartido.add(p);
 				}
 			}
+			usarConexion.close();
 		}catch (Exception e) {
 			System.out.println("Ocurrio un error inesperado, intente de nuevo " +e);
 		}
@@ -203,40 +210,43 @@ public class Consulta {
 	
 	public Map<String,List<Pronostico>> pronosticos(){
 		List<Pronostico> listaPronostico = new ArrayList<Pronostico>();
+		List<String> listaAux = new ArrayList<String>();
 		Map<String,List<Pronostico>> mapPronostico = new HashMap<String,List<Pronostico>>();
+		List<String> listaParticipantes = new ArrayList<String>();
 		try {
-			List<String> listaParticipantes = new ArrayList<String>();
 			int i = 0;
 			Connection usarConexion = conn.conectar(); 
-			String consulta = "SELECT usuario FROM Pronostico";
+			String consulta = "SELECT * FROM Pronostico";
 			stm = usarConexion.createStatement();
 			rs = stm.executeQuery(consulta); 
 			while (rs.next()) {
+				listaAux.add(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3) + " " + rs.getString(4) + " " + rs.getString(5));
 				if (i == 0) {
-					listaParticipantes.add(rs.getString(1));
+					listaParticipantes.add(rs.getString(5));
 					i++;
 				} else {
-					if (!listaParticipantes.contains(rs.getString(1))) {
-						listaParticipantes.add(rs.getString(1));
+					if (!listaParticipantes.contains(rs.getString(5))) {
+						listaParticipantes.add(rs.getString(5));
 					}
 				}
 			}
-			for (String elemento : listaParticipantes) {
-				consulta = "SELECT * FROM pronostico WHERE usuario ='"+elemento+"'";
-				stm = usarConexion.createStatement();
-				rs = stm.executeQuery(consulta);
-				while (rs.next()) {
-					int id_partido = rs.getInt(2);
-					String id_equipo = rs.getString(3);
-					Resultado resultado = new Resultado();
-					ResultadoEnum res = resultado.determinarResultado(rs.getString(4));
-					Partido par = buscarPartido(id_partido);
-					Equipo eq = buscarEquipo(id_equipo);
-					Pronostico pro = new Pronostico(par,eq,res);
-					listaPronostico.add(pro);
+			for (String lp : listaParticipantes) {
+				for (String elemento : listaAux) {
+					String separado[] = elemento.split(" ");
+					if (lp.equals(separado[4])) {
+						Partido par = buscarPartido(Integer.parseInt(separado[1]));
+						Equipo eq = buscarEquipo(separado[2]);
+						Resultado resultado = new Resultado();
+						ResultadoEnum res = resultado.determinarResultado(separado[3]);
+						Pronostico pro = new Pronostico(par,eq,res);
+						listaPronostico.add(pro);
+					} else {
+						mapPronostico.put(lp, listaPronostico);
+						listaPronostico.clear();
+					}
 				}
-				mapPronostico.put(elemento, listaPronostico);
 			}
+			usarConexion.close();
 		} catch (Exception e) {
 			System.out.println("Ocurrio un error inesperado, intente de nuevo " +e);
 		}

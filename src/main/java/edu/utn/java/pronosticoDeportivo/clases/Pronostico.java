@@ -58,7 +58,7 @@ public class Pronostico {
 
 	@Override
 	public String toString() {
-		return partido + "\n" + resultado;
+		return partido + " " + resultado;
 	}
 	
 	

@@ -50,4 +50,16 @@ public class Resultado {
 			}
 		return res;
 		}
+	
+	public ResultadoEnum determinarResultado(int a, int b) {
+		ResultadoEnum res = null;
+		if (a > b) {
+			res = ResultadoEnum.GANADOR;
+		} else if (a < b) {
+			res = ResultadoEnum.PERDEDOR;
+		} else if (a == b) {
+			res = ResultadoEnum.EMPATE;
+		}
+		return res;
+	}
 }

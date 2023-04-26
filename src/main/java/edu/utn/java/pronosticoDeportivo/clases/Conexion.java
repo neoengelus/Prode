@@ -13,8 +13,7 @@ public class Conexion {
 	public Connection conectar() {
 		try {
 			Class.forName(DRIVER);
-			con = DriverManager.getConnection(BD_URL,USER,PASS); 
-//			System.out.println("Conexion exitosa");
+			con = DriverManager.getConnection(BD_URL,USER,PASS);
 		}catch(Exception e) {
 			System.out.println("Problemas al intentar conectar a la base de datos " +e);
 		}
@@ -28,7 +27,6 @@ public class Conexion {
 	public void cierraConexion() {
 	    try {
 	        con.close();
-//	        System.out.println("Conexion cerrada exitosa");
 	    } catch (Exception e) {
 	        System.out.println("Error cerrando la conexion " +e);
 	    }
